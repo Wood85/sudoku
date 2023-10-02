@@ -1,0 +1,126 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-family: 'Roboto', sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100%;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	padding: 0;
+	border: none;
+	font: inherit;
+	color: inherit;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.header {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	padding: 0 10%;
+	background: #49599A;
+	color: #FFFFFF;
+	align-items: center;
+}
+
+.header__title {
+	display: flex;
+	width: 33%;
+	height: 100%;
+	align-items: center;
+}
+
+.header__nav {
+	width: 67%;
+	height: 100%;
+}
+
+.header__list {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header__item {}
+
+.header__btn {}
+
+.content {
+	padding-top: 100px;
+	margin: 0 auto;
+}
+
+.table {
+	display: flex;
+	flex-wrap: wrap;
+	width: 600px;
+	height: 600px;
+	border: 2px solid #49599A;
+}
+
+.table__square {
+	display: flex;
+	flex-wrap: wrap;
+	height: 33.33%;
+	width: 33.33%;
+	border: 2px solid #49599A;
+}
+
+.table__cell {
+	height: 33.33%;
+	width: 33.33%;
+	border: 1px solid #49599A;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
+	background: #49599A;
+}
+
+.footer__list {
+	height: 100%;
+	padding: 0 20px;
+	font-weight: 700;
+	color: #FFFFFF;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.footer__item {}
+
+.footer__item_author {}
+
+.footer__link {
+	color: #FFFFFF;
+}
+
+.footer__item_year {}
+
+.footer__item_rs-school {}
+
+.footer__icon-rs-school {}

@@ -4,13 +4,141 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 	<title>Sudoku</title>
 </head>
 
 <body>
-
-
+	<header class="header">
+		<h1 class="header__title">Sudoku</h1>
+		<nav class="header__nav">
+			<ul class="header__list">
+				<li class="header__item"><button class="header__btn">New Game</button></li>
+				<li class="header__item"><button class="header__btn">Solve</button></li>
+				<li class="header__item"><button class="header__btn">Validate</button></li>
+				<li class="header__item"><button class="header__btn">Level</button></li>
+			</ul>
+		</nav>
+	</header>
+	<main class="content">
+		<div class="table">
+			<div class="table__square">
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+			</div>
+			<div class="table__square">
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+			</div>
+			<div class="table__square">
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+			</div>
+			<div class="table__square">
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+			</div>
+			<div class="table__square">
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+			</div>
+			<div class="table__square">
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+			</div>
+			<div class="table__square">
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+			</div>
+			<div class="table__square">
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+			</div>
+			<div class="table__square">
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+				<div class="table__cell"></div>
+			</div>
+		</div>
+	</main>
+	<footer class="footer">
+		<ul class="footer__list">
+			<li class="footer__item footer__item_author">
+				<a href="https://github.com/Wood85" class="footer__link">Wood85</a>
+			</li>
+			<li class="footer__item footer__item_year">2023</li>
+			<li class="footer__item footer__item_rs-school">
+				<a href="https://rs.school/js-stage0/" class="footer__link">
+					<img src="" alt="" class="footer__icon-rs-school">
+				</a>
+			</li>
+		</ul>
+	</footer>
 	<script src="script.js"></script>
 </body>
 
