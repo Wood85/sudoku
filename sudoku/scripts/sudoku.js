@@ -1,4 +1,5 @@
-import { createSudoku, findEmptyCell, GRID_SIZE, SQUARE_SIZE } from "./createSudoku.js";
+import { createSudoku, findEmptyCell } from "./createSudoku.js";
+import { GRID_SIZE, SQUARE_SIZE } from "./common.js";
 
 export class Sudoku {
 	constructor() {

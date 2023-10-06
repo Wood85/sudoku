@@ -1,5 +1,4 @@
-export const GRID_SIZE = 9;
-export const SQUARE_SIZE = 3;
+import { GRID_SIZE, SQUARE_SIZE } from "./common.js";
 let level = 30;
 
 export function createSudoku() {

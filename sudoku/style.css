@@ -90,6 +90,11 @@ button {
 .table__cell {
 	height: 33.33%;
 	width: 33.33%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	font-weight: 700;
 	border: 1px solid #49599A;
 }
 
