@@ -1,5 +1,5 @@
 import { GRID_SIZE, SQUARE_SIZE } from "./common.js";
-let level = 30;
+let level = 1;
 
 export function createSudoku() {
 	const sudoku = createSudokuMatrix();
