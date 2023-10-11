@@ -1,10 +1,9 @@
 import { GRID_SIZE, SQUARE_SIZE } from "./common.js";
-let level = 1;
 
-export function createSudoku() {
+export function createSudoku(level) {
 	const sudoku = createSudokuMatrix();
 	completedSudoku(sudoku);
-	return clearCells(sudoku);
+	return clearCells(sudoku, level);
 }
 
 function createSudokuMatrix() {
@@ -71,11 +70,11 @@ function completedSudoku(matrix) {
 	}
 };
 
-function clearCells(matrix) {
+function clearCells(matrix, num) {
 	const resultMatrix = [...matrix].map(row => [...row]);
 
 	let i = 0;
-	while (i < level) {
+	while (i < num) {
 		let row = Math.floor(Math.random() * GRID_SIZE);
 		let column = Math.floor(Math.random() * GRID_SIZE);
 		if (resultMatrix[row][column] !== null) {
@@ -83,6 +82,7 @@ function clearCells(matrix) {
 			i++;
 		}
 	}
+	console.log(resultMatrix);
 	return resultMatrix;
 }
 

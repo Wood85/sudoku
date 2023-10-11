@@ -18,7 +18,6 @@
 			<ul class="header__list">
 				<li class="header__item"><button class="header__btn header__btn_new-game">New Game</button></li>
 				<li class="header__item"><button class="header__btn header__btn_solve">Solve</button></li>
-				<li class="header__item"><button class="header__btn header__btn_validate">Validate</button></li>
 				<li class="header__item"><button class="header__btn header__btn_level">Level</button></li>
 			</ul>
 		</nav>
@@ -121,14 +120,37 @@
 			</li>
 		</ul>
 	</footer>
-	<div class="overlay">
+	<div class="win__overlay">
 		<div class="modal__win">
 			<h2 class="modal__text">You Win!</h2>
-			<button class="modal__close">x</button>
+			<button class="modal__close">
+				<img src="./images/close_btn.svg" alt="close_btn" class="modal__img-close" width="15" height="15">
+			</button>
 		</div>
 	</div>
+	<div class="level__overlay">
+		<div class="modal__level">
+			<form class="level__form">
+				<h2 class="level__title">select level</h2>
+				<div class="level__field">
+					<input class="level__radio" name="level" type="radio" value="10" id="ease" checked>
+					<label for="ease">easy</label>
+				</div>
+				<div class="level__field">
+					<input class="level__radio" name="level" type="radio" value="30" id="middle">
+					<label for="middle">middle</label>
+				</div>
+				<div class="level__field">
+					<input class="level__radio" name="level" type="radio" value="1" id="hard">
+					<label for="hard">hard</label>
+				</div>
+				<buttton type="submit" class="level__submit">select</buttton>
+			</form>
+			<button class="modal__close">
+				<img src="./images/close_btn.svg" alt="close_btn" class="modal__img-close" width="15" height="15">
+			</button>
+		</div>
 	</div>
-	<div class="modal__level"></div>
 	<script src="scripts/script.js" type="module"></script>
 </body>
 

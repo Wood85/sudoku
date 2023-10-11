@@ -138,7 +138,8 @@ button {
 
 .footer__icon-rs-school {}
 
-.overlay {
+.win__overlay,
+.level__overlay {
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -150,7 +151,9 @@ button {
 	pointer-events: none;
 }
 
-.modal__win {
+
+.modal__win,
+.modal__level {
 	width: 300px;
 	height: 300px;
 	display: flex;
@@ -170,12 +173,85 @@ button {
 	font-weight: 700;
 }
 
-.overlay.active {
+.win__overlay.active,
+.level__overlay.active {
 	opacity: 1;
 	pointer-events: auto;
 }
 
-.modal__win.active {
-	opacity: 1;
-	pointer-events: auto;
+.level__form {
+	display: flex;
+	flex-direction: column;
+}
+
+.level__title {
+	text-transform: capitalize;
+	margin-bottom: 20px;
+}
+
+.level__field {
+	position: relative;
+	width: 150px;
+	height: 20px;
+	cursor: pointer;
+	margin: 5px 0;
+}
+
+.level__radio {
+	cursor: pointer;
+}
+
+label {
+	position: absolute;
+	left: 25px;
+	bottom: 2px;
+	cursor: pointer;
+}
+
+.level__submit {
+	display: flex;
+	height: 30px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	background-color: #49599A;
+	color: #FFFFFF;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+input[type='radio'] {
+	position: relative;
+	height: 14px;
+	width: 14px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+}
+
+input[type='radio']::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	border: 2px solid #49599A;
+}
+
+input[type='radio']:checked::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #49599A;
+	transform: translate(-50%, -50%);
+	visibility: visible;
 }
