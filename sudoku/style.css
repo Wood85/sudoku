@@ -67,8 +67,17 @@ button {
 .header__btn {}
 
 .content {
-	padding-top: 100px;
+	padding-top: 20px;
 	margin: 0 auto;
+}
+
+.timer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
+	font-size: 20px;
+	font-weight: 700;
 }
 
 .table {
@@ -139,6 +148,7 @@ button {
 .footer__icon-rs-school {}
 
 .win__overlay,
+.loss__overlay,
 .level__overlay {
 	position: absolute;
 	height: 100%;
@@ -153,15 +163,23 @@ button {
 
 
 .modal__win,
+.modal__loss,
 .modal__level {
 	width: 300px;
 	height: 300px;
 	display: flex;
+	flex-direction: column;
 	position: relative;
 	justify-content: center;
 	align-items: center;
 	background-color: #FFFFFF;
 	border-radius: 10px;
+}
+
+.modal__result {
+	margin-top: 20px;
+	font-size: 20px;
+	font-weight: 700;
 }
 
 .modal__close {
@@ -174,6 +192,7 @@ button {
 }
 
 .win__overlay.active,
+.loss__overlay.active,
 .level__overlay.active {
 	opacity: 1;
 	pointer-events: auto;

@@ -3,7 +3,9 @@ import { GRID_SIZE, SQUARE_SIZE } from "./common.js";
 
 export class Sudoku {
 	constructor(level) {
-		this.matrix = createSudoku(level);
+		this.game = createSudoku(level)
+		this.matrix = this.game[0];
+		this.grid = this.game[1];
 	}
 
 	getDuplicatePositions(row, column, value) {

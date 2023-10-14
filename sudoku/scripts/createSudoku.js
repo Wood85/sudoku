@@ -3,7 +3,9 @@ import { GRID_SIZE, SQUARE_SIZE } from "./common.js";
 export function createSudoku(level) {
 	const sudoku = createSudokuMatrix();
 	completedSudoku(sudoku);
-	return clearCells(sudoku, level);
+	const grid = sudoku;
+	const arrSudoku = [clearCells(sudoku, level), grid]
+	return arrSudoku;
 }
 
 function createSudokuMatrix() {
@@ -82,7 +84,6 @@ function clearCells(matrix, num) {
 			i++;
 		}
 	}
-	console.log(resultMatrix);
 	return resultMatrix;
 }
 

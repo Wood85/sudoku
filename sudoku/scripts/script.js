@@ -1,17 +1,33 @@
 import { GRID_SIZE, convertIndexToPosition } from "./common.js";
 import { Sudoku } from "./sudoku.js";
 let level;
+let matrix;
+let grid;
+let timer;
+let pauseTimer = false;
+let intervalId;
+
+
+if (!localStorage.getItem('sudokuResults')) {
+	localStorage.setItem('sudokuResults', JSON.stringify([]));
+}
+let sudokuResults = JSON.parse(localStorage.getItem('sudokuResults'))
+
+
+startTime()
+
 function setLevel(num) {
 	level = num;
 }
 let cells;
 let selectedCellIndex;
 let selectedCell;
-sudoku(level)
+sudoku(level);
 function sudoku(level = 10) {
 	const sudoku = new Sudoku(level);
 	init();
-
+	matrix = sudoku.matrix;
+	grid = sudoku.grid;
 	function init() {
 		initCells();
 	}
@@ -77,8 +93,16 @@ function sudoku(level = 10) {
 		selectedCell.classList.add('selected');
 		setValueInSelectedCell(number);
 
-		if (!sudoku.hasEmptyCells()) {
+		const result = []
+		cells.forEach((cell) => {
+			result.push(Number(cell.innerHTML));
+		});
+
+		if (!sudoku.hasEmptyCells() && (JSON.stringify(grid.flat()) === JSON.stringify(result))) {
 			setTimeout(() => win(), 500);
+		}
+		if (!sudoku.hasEmptyCells() && (JSON.stringify(grid.flat()) !== JSON.stringify(result))) {
+			setTimeout(() => loss(), 500);
 		}
 	}
 
@@ -101,10 +125,29 @@ function sudoku(level = 10) {
 	function win() {
 		const modal = document.querySelector('.win__overlay');
 		const closeBtns = document.querySelectorAll('.modal__close');
+		const result = document.querySelector('.modal__result');
+		setTime(result);
 		modal.classList.add('active');
-		closeBtns.forEach((btn) => btn.addEventListener('click', () => {
+		closeBtns.forEach((btn) => btn.addEventListener('click', (e) => {
+			e.preventDefault();
 			modal.classList.remove('active');
-		}))
+		}));
+		pauseTimer = true;
+		sudokuResults.push(timer);
+		localStorage.setItem('sudokuResults', JSON.stringify(sudokuResults));
+	}
+
+	function loss() {
+		const modal = document.querySelector('.loss__overlay');
+		const closeBtns = document.querySelectorAll('.modal__close');
+		modal.classList.add('active');
+		closeBtns.forEach((btn) => btn.addEventListener('click', (e) => {
+			e.preventDefault();
+			modal.classList.remove('active');
+		}));
+		pauseTimer = true;
+		sudokuResults.push(null);
+		localStorage.setItem('sudokuResults', JSON.stringify(sudokuResults));
 	}
 
 }
@@ -114,43 +157,85 @@ function sudoku(level = 10) {
 
 const newGameBtn = document.querySelector('.header__btn_new-game');
 newGameBtn.addEventListener('click', (e) => {
-	// location.reload();
 	e.preventDefault();
-	console.log(level);
-	cells = document.querySelectorAll('.table__cell');
-	cells.forEach((cell) => {
-		cell.innerHTML = '';
-		cell.classList.remove('filled');
-		cell.classList.remove('selected');
-	});
+	resetViewCells();
 	sudoku(level);
+	startTime();
 });
 
 //level
-
 
 const levelBtn = document.querySelector('.header__btn_level');
 const levelModal = document.querySelector('.level__overlay');
 const closeBtns = document.querySelectorAll('.modal__close');
 const submit = document.querySelector('.level__submit');
 const form = document.querySelector('.level__form');
-levelBtn.addEventListener('click', () => {
+levelBtn.addEventListener('click', (e) => {
+	e.preventDefault();
 	levelModal.classList.add('active');
 	closeBtns.forEach((btn) => btn.addEventListener('click', () => {
 		levelModal.classList.remove('active');
 	}))
 });
-submit.addEventListener('click', () => {
+submit.addEventListener('click', (e) => {
+	e.preventDefault();
 	levelModal.classList.remove('active');
+	resetViewCells();
+	setLevel(Number(form.elements['level'].value));
+	sudoku(Number(form.elements['level'].value));
+	startTime();
+});
+
+//resetViewCells
+
+function resetViewCells() {
 	cells = document.querySelectorAll('.table__cell');
 	cells.forEach((cell) => {
 		cell.innerHTML = '';
 		cell.classList.remove('filled');
 		cell.classList.remove('selected');
 	});
-	setLevel(Number(form.elements['level'].value));
-	sudoku(Number(form.elements['level'].value));
+}
+
+//solve
+
+const solveBtn = document.querySelector('.header__btn_solve');
+solveBtn.addEventListener('click', (e) => {
+	e.preventDefault();
+	const cells = document.querySelectorAll('.table__cell');
+
+	cells.forEach((item, index) => item.innerHTML = grid.flat()[index]);
+	setTimeout(() => {
+		cells.forEach((item, index) => item.innerHTML = matrix.flat()[index]);
+	}, 3000)
+	timer += 30;
 });
+
+// timer
+function startTime() {
+	timer = 0;
+	const timerDiv = document.querySelector('.timer');
+	clearInterval(intervalId);
+	pauseTimer = false;
+	timerDiv.innerHTML = `00:00`;
+	intervalId = setInterval(function () {
+		if (!pauseTimer) {
+			timer++;
+			setTime(timerDiv);
+		}
+	}, 1000)
+
+}
+
+function setTime(selector) {
+	let min = Math.floor(timer / 60);
+	let sec = timer % 60;
+	selector.innerHTML =
+		(("" + min).length < 2 ? "0" + min : min) +
+		":" +
+		(("" + sec).length < 2 ? "0" + sec : sec);
+}
+
 
 
 

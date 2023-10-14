@@ -23,6 +23,7 @@
 		</nav>
 	</header>
 	<main class="content">
+		<div class="timer">00:00</div>
 		<div class="table">
 			<div class="table__cell"></div>
 			<div class="table__cell"></div>
@@ -123,6 +124,15 @@
 	<div class="win__overlay">
 		<div class="modal__win">
 			<h2 class="modal__text">You Win!</h2>
+			<div class="modal__result"></div>
+			<button class="modal__close">
+				<img src="./images/close_btn.svg" alt="close_btn" class="modal__img-close" width="15" height="15">
+			</button>
+		</div>
+	</div>
+	<div class="loss__overlay">
+		<div class="modal__loss">
+			<h2 class="modal__text">Game Over</h2>
 			<button class="modal__close">
 				<img src="./images/close_btn.svg" alt="close_btn" class="modal__img-close" width="15" height="15">
 			</button>
