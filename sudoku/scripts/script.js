@@ -1,17 +1,31 @@
 import { GRID_SIZE, convertIndexToPosition } from "./common.js";
 import { Sudoku } from "./sudoku.js";
-let level;
+
 let matrix;
 let grid;
 let timer;
 let pauseTimer = false;
 let intervalId;
 
+if (!localStorage.getItem('sudokuLevel')) {
+	localStorage.setItem('sudokuLevel', JSON.stringify(10));
+};
+
+let level = JSON.parse(localStorage.getItem('sudokuLevel'));
 
 if (!localStorage.getItem('sudokuResults')) {
 	localStorage.setItem('sudokuResults', JSON.stringify([]));
+};
+
+function sortArr(arr) {
+	return arr.sort((a, b) => a - b);
 }
-let sudokuResults = JSON.parse(localStorage.getItem('sudokuResults'))
+
+function resultsArrLength(arr) {
+	const res = arr.slice(0, 10)
+	return res;
+}
+
 
 
 startTime()
@@ -23,7 +37,7 @@ let cells;
 let selectedCellIndex;
 let selectedCell;
 sudoku(level);
-function sudoku(level = 10) {
+function sudoku(level) {
 	const sudoku = new Sudoku(level);
 	init();
 	matrix = sudoku.matrix;
@@ -93,7 +107,7 @@ function sudoku(level = 10) {
 		selectedCell.classList.add('selected');
 		setValueInSelectedCell(number);
 
-		const result = []
+		const result = [];
 		cells.forEach((cell) => {
 			result.push(Number(cell.innerHTML));
 		});
@@ -133,8 +147,10 @@ function sudoku(level = 10) {
 			modal.classList.remove('active');
 		}));
 		pauseTimer = true;
+		let sudokuResults = JSON.parse(localStorage.getItem('sudokuResults'));
 		sudokuResults.push(timer);
-		localStorage.setItem('sudokuResults', JSON.stringify(sudokuResults));
+		sortArr(sudokuResults);
+		localStorage.setItem('sudokuResults', JSON.stringify(resultsArrLength(sudokuResults)));
 	}
 
 	function loss() {
@@ -146,8 +162,10 @@ function sudoku(level = 10) {
 			modal.classList.remove('active');
 		}));
 		pauseTimer = true;
-		sudokuResults.push(null);
-		localStorage.setItem('sudokuResults', JSON.stringify(sudokuResults));
+		let sudokuResults = JSON.parse(localStorage.getItem('sudokuResults'));
+		sudokuResults.push(100000);
+		sortArr(sudokuResults);
+		localStorage.setItem('sudokuResults', JSON.stringify(resultsArrLength(sudokuResults)));
 	}
 
 }
@@ -158,9 +176,7 @@ function sudoku(level = 10) {
 const newGameBtn = document.querySelector('.header__btn_new-game');
 newGameBtn.addEventListener('click', (e) => {
 	e.preventDefault();
-	resetViewCells();
-	sudoku(level);
-	startTime();
+	location.reload();
 });
 
 //level
@@ -181,6 +197,7 @@ submit.addEventListener('click', (e) => {
 	e.preventDefault();
 	levelModal.classList.remove('active');
 	resetViewCells();
+	localStorage.setItem('sudokuLevel', JSON.stringify(Number(form.elements['level'].value)));
 	setLevel(Number(form.elements['level'].value));
 	sudoku(Number(form.elements['level'].value));
 	startTime();
