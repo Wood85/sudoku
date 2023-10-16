@@ -275,7 +275,6 @@ resultsBtn.addEventListener('click', (e) => {
 	resultsList.innerHTML = displayResults;
 	if (resultsArr.length === 0) {
 		resultsList.innerHTML = `<li class="results__item">Nobody solved Sudoku</li>`
-		console.log('Nobody solved Sudoku');
 	}
 
 	resultsModal.classList.add('active');
