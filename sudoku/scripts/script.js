@@ -139,7 +139,7 @@ function sudoku(level) {
 	function win() {
 		const modal = document.querySelector('.win__overlay');
 		const closeBtns = document.querySelectorAll('.modal__close');
-		const result = document.querySelector('.modal__result');
+		const result = document.querySelector('.modal__time');
 		setTime(result);
 		modal.classList.add('active');
 		closeBtns.forEach((btn) => btn.addEventListener('click', (e) => {
@@ -163,7 +163,7 @@ function sudoku(level) {
 		}));
 		pauseTimer = true;
 		let sudokuResults = JSON.parse(localStorage.getItem('sudokuResults'));
-		sudokuResults.push(100000);
+		sudokuResults.push(1000000);
 		sortArr(sudokuResults);
 		localStorage.setItem('sudokuResults', JSON.stringify(resultsArrLength(sudokuResults)));
 	}
@@ -253,7 +253,36 @@ function setTime(selector) {
 		(("" + sec).length < 2 ? "0" + sec : sec);
 }
 
+// results
 
+const resultsBtn = document.querySelector('.header__btn_results');
+const resultsModal = document.querySelector('.results__overlay');
+const resultsList = document.querySelector('.modal__list');
+resultsBtn.addEventListener('click', (e) => {
+	e.preventDefault();
+	const resultsArr = JSON.parse(localStorage.getItem('sudokuResults'));
+	const toMinAndSec = resultsArr.map(item => {
+		let min = Math.floor(item / 60);
+		let sec = item % 60;
+		if (min === 16666 && sec === 40) {
+			return 'game over';
+		}
+		return (("" + min).length < 2 ? "0" + min : min) +
+			":" +
+			(("" + sec).length < 2 ? "0" + sec : sec);
+	})
+	const displayResults = toMinAndSec.map((item, index) => `<li class="results__item">#${index + 1} : ${item}</li>`).join('');
+	resultsList.innerHTML = displayResults;
+	if (resultsArr.length === 0) {
+		resultsList.innerHTML = `<li class="results__item">Nobody solved Sudoku</li>`
+		console.log('Nobody solved Sudoku');
+	}
+
+	resultsModal.classList.add('active');
+	closeBtns.forEach((btn) => btn.addEventListener('click', () => {
+		resultsModal.classList.remove('active');
+	}));
+});
 
 
 

@@ -149,7 +149,8 @@ button {
 
 .win__overlay,
 .loss__overlay,
-.level__overlay {
+.level__overlay,
+.results__overlay {
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -164,7 +165,8 @@ button {
 
 .modal__win,
 .modal__loss,
-.modal__level {
+.modal__level,
+.modal__results {
 	width: 300px;
 	height: 300px;
 	display: flex;
@@ -176,7 +178,7 @@ button {
 	border-radius: 10px;
 }
 
-.modal__result {
+.modal__time {
 	margin-top: 20px;
 	font-size: 20px;
 	font-weight: 700;
@@ -193,7 +195,8 @@ button {
 
 .win__overlay.active,
 .loss__overlay.active,
-.level__overlay.active {
+.level__overlay.active,
+.results__overlay.active {
 	opacity: 1;
 	pointer-events: auto;
 }
@@ -203,7 +206,8 @@ button {
 	flex-direction: column;
 }
 
-.level__title {
+.level__title,
+.modal__title {
 	text-transform: capitalize;
 	margin-bottom: 20px;
 }
@@ -237,6 +241,10 @@ label {
 	color: #FFFFFF;
 	border-radius: 5px;
 	cursor: pointer;
+}
+
+.results__item {
+	font-weight: 700;
 }
 
 input[type='radio'] {
