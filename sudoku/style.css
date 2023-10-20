@@ -62,13 +62,18 @@ button {
 	align-items: center;
 }
 
-.header__item {}
-
-.header__btn {}
-
 .content {
+	height: 80%;
 	padding-top: 20px;
 	margin: 0 auto;
+}
+
+.container {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .timer {
@@ -119,7 +124,7 @@ button {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	height: 100px;
+	height: 60px;
 	background: #49599A;
 }
 
@@ -133,19 +138,9 @@ button {
 	align-items: center;
 }
 
-.footer__item {}
-
-.footer__item_author {}
-
 .footer__link {
 	color: #FFFFFF;
 }
-
-.footer__item_year {}
-
-.footer__item_rs-school {}
-
-.footer__icon-rs-school {}
 
 .win__overlay,
 .loss__overlay,
@@ -281,4 +276,29 @@ input[type='radio']:checked::after {
 	background-color: #49599A;
 	transform: translate(-50%, -50%);
 	visibility: visible;
+}
+
+@media (max-height: 1000px) {
+	.header {
+		height: 80px;
+	}
+
+	.timer {
+		margin: 0 0 5px 0;
+	}
+}
+
+@media (max-height: 800px) {
+	.header {
+		height: 60px;
+	}
+
+	.content {
+		padding-top: 5px;
+	}
+
+	.table {
+		width: 500px;
+		height: 500px;
+	}
 }
